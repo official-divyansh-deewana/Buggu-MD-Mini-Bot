@@ -5,7 +5,7 @@ const antideleteSchema = new mongoose.Schema({
     status: { type: Boolean, default: false }
 });
 
-const Antidelete = mongoose.model('Antidelete', antideleteSchema);
+const Antidelete = mongoose.model('antidelete', antideleteSchema);
 
 const getAntideleteStatus = async (chatId) => {
     try {
@@ -21,4 +21,4 @@ const setAntideleteStatus = async (chatId, status) => {
     } catch (e) { return false; }
 };
 
-module.exports = { Antidelete, getAntideleteStatus, setAntideleteStatus };
+module.exports = { antidelete, getAntideleteStatus, setAntideleteStatus };
