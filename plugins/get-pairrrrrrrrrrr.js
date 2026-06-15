@@ -7,7 +7,7 @@ cmd({
     react: "✅",
     desc: "Get pairing code for ARSLAN-MD bot",
     category: "download",
-    use: ".pair 92323***",
+    use: ".pair 918756***",
     filename: __filename
 }, async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, senderNumber, reply }) => {
     try {
@@ -81,7 +81,7 @@ cmd({
         
         // Send image with caption
         const sentMessage = await conn.sendMessage(from, {
-            image: { url: "https://files.catbox.moe/prkkzj.png" },
+            image: { url: "https://i.ibb.co/tT1Z8nV6/x.jpg" },
             caption: `- *⍴ᥲіrіᥒg ᥴ᥆ძᥱ*\n\n Notification has been sent to your WhatsApp. Please check your phone and copy this code to pair it and get your session id.\n\n*🔢 Pairing Code*: *${pairingCode}*\n\n> *Copy it from below message 👇🏻*`
         }, { quoted: m });
 
