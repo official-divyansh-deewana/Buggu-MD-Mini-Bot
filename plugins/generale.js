@@ -29,7 +29,7 @@ async(conn, mek, m, { from, reply, myquoted }) => {
 
         // 3. Message Final Stylé
         const pingMsg = `
-*👑 ARSLAN-MD UPTIME 👑* ⚡
+*👑 BUGGU-MD UPTIME 👑* ⚡
 
 * UPTIME :❯  ${latency}*
 
@@ -61,14 +61,14 @@ async(conn, mek, m, { from, myquoted }) => {
     // Création d'une vCard (Fiche contact)
     const vcard = 'BEGIN:VCARD\n' +
                   'VERSION:3.0\n' +
-                  'FN:ArslanMD (Owner)\n' +
-                  'ORG:ArslanMD Corp;\n' +
+                  'FN:BUGGU (Owner)\n' +
+                  'ORG:BUGGU-MD Corp;\n' +
                   `TEL;type=CELL;type=VOICE;waid=${ownerNumber}:${ownerNumber}\n` +
                   'END:VCARD';
 
     await conn.sendMessage(from, {
         contacts: {
-            displayName: 'ARSLAN-MD',
+            displayName: 'BUGGU-MD',
             contacts: [{ vcard }]
         }
     }, { quoted: myquoted });
