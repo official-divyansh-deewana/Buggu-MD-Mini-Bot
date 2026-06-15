@@ -37,7 +37,7 @@ cmd({
 ┃ ✦│▸ Total Commands : *${totalCommands}*
 ┃ ✦│▸ Time           : ${time}
 ┃ ✦│▸ Date           : ${date}
-┃ ✦│▸ Platform       : arslanmd.xo.je
+┃ ✦│▸ Platform       : ī.am
 ┃ ✦╰─────────────┈⊷
 ╰━━━━━━━━━━━━┈⊷
 ${menuText}
