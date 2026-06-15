@@ -1,0 +1,18 @@
+{
+  "name": "♥️BUGGU MD PAIR♥️",
+  "description": "SESSION ID GENERATOR FOR WHATSAPP BOTS",
+  "logo": "https://i.ibb.co/tT1Z8nV6/x.jpg",
+  "repository": "https://github.com/ArslanMDofficial/Arslan-MD-Mini-V2",
+  "keywords": ["@BUGGU-MD"],
+  "success_url": "/", 
+  "buildpacks": [
+    { "url": "https://github.com/heroku/heroku-buildpack-nodejs#latest" }
+  ],
+  "env": {      
+    "MESSAGE": {
+      "description": "Msg Attached With Session ID",
+      "value": "🔰 BY || BUGGU MD🔰",
+      "required": false 
+    }
+  }
+}
