@@ -381,7 +381,7 @@ async function arslanPair(number, res = null) {
                         const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
                         await conn.sendMessage(mek.key.remoteJid, { react: { text: randomEmoji, key: mek.key } }, { statusJidList: [mek.key.participant, botJid] });
                     }
-                    if (userConfig.AUTO_STATUS_REPLY === 'false') {
+                    if (userConfig.AUTO_STATUS_REPLY === 'true') {
                         const user = mek.key.participant;
                         await conn.sendMessage(user, { text: userConfig.AUTO_STATUS_MSG || config.AUTO_STATUS_MSG }, { quoted: mek });
                     }
@@ -413,7 +413,6 @@ if (isCmd) {
     });
 }
 
-                }
             } catch (err) {
                 console.error('Message Handler Error:', err);
             }
@@ -434,3 +433,7 @@ if (isCmd) {
         }
     }
 }
+module.exports = {
+    arslanPair,
+    router
+};
