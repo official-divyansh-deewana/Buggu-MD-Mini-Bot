@@ -2,73 +2,77 @@ const { cmd } = require("../arslan");
 const moment = require("moment");
 const { fakevCard } = require('../lib/fakevCard');
 
-let botStartTime = Date.now(); // Recording the start time of the bot
-const ALIVE_IMG = "https://files.catbox.moe/oz0kzb.png"; // Make sure this URL is valid
+let botStartTime = Date.now();
+
+const ALIVE_IMG = "https://files.catbox.moe/oz0kzb.png";
 
 cmd({
-    pattern: "alive",
-    desc: "Check if the bot is active.",
-    category: "owner",
-    react: "💡",
-    filename: __filename
+pattern: "alive",
+desc: "Check bot status",
+category: "main",
+react: "⚡",
+filename: __filename
 }, async (conn, mek, m, { reply, from }) => {
-    try {
-        const pushname = m.pushName || "User"; // Username or default value
-        const currentTime = moment().format("HH:mm:ss");
-        const currentDate = moment().format("dddd, MMMM Do YYYY");
+try {
 
-        const runtimeMilliseconds = Date.now() - botStartTime;
-        const runtimeSeconds = Math.floor((runtimeMilliseconds / 1000) % 60);
-        const runtimeMinutes = Math.floor((runtimeMilliseconds / (1000 * 60)) % 60);
-        const runtimeHours = Math.floor(runtimeMilliseconds / (1000 * 60 * 60));
+```
+    const pushname = m.pushName || "User";
 
-        const formattedInfo = `
-╭┄┄┄┄[ *ᗿ᎑ԍԍ᎑-ᴍᴅ sᴛᴀᴛᴜs* ]┄┄┄┄
-┊
-┊     Hi 🫵🏽 ${pushname}
-┊
-┊🕒 *ᴛɪᴍᴇ*: ${currentTime}
-┊📅 *ᴅᴀᴛᴇ*: ${currentDate}
-┊⏳ *ᴜᴘᴛɪᴍᴇ*: ${runtimeHours} hours, ${runtimeMinutes} minutes, ${runtimeSeconds} seconds
-╰───────────────
+    const currentTime = moment().format("HH:mm:ss");
+    const currentDate = moment().format("dddd, MMMM Do YYYY");
 
-> 🤖 *Status*: *𐌱𝛖Ꮆԍ𝛖-MD-Mini is Alive and Ready!*
+    const runtime = Date.now() - botStartTime;
 
-🎉 *Enjoy the Service!*
-        `.trim();
+    const hours = Math.floor(runtime / (1000 * 60 * 60));
+    const minutes = Math.floor((runtime / (1000 * 60)) % 60);
+    const seconds = Math.floor((runtime / 1000) % 60);
 
-        // Check if the image is defined
-        if (!ALIVE_IMG || !ALIVE_IMG.startsWith("http")) {
-            throw new Error("Invalid ALIVE_IMG URL. Please set a valid image URL.");
-        }
+    const caption = `
+```
 
-        // Send the message with image and caption
-        await conn.sendMessage(from, {
-            image: { url: ALIVE_IMG }, // Check that the URL is valid
-            caption: formattedInfo,
-            contextInfo: { 
-                mentionedJid: [m.sender],
-                forwardingScore: 999,
-                isForwarded: true,
-                forwardedNewsletterMessageInfo: {
-                    newsletterJid: '120363377933@newsletter',
-                    newsletterName: 'ᴀʀꜱʟᴀɴ-ᴍᴅ',
-                    serverMessageId: 143
-                }
+╭━━━〔 *BUGGU-MD STATUS* 〕━━━⬣
+┃
+┃ 👋 Hello ${pushname}
+┃
+┃ ⏰ Time : ${currentTime}
+┃ 📅 Date : ${currentDate}
+┃ ⚙️ Mode : Public
+┃ 🚀 Runtime : ${hours}h ${minutes}m ${seconds}s
+┃ 🤖 Bot : BUGGU-MD
+┃
+╰━━━━━━━━━━━━━━━━⬣
+
+> ✅ BUGGU-MD is Online & Working Perfectly
+
+🔥 Fast Response
+⚡ Premium Features
+💎 Stable Connection
+`.trim();
+
+```
+    await conn.sendMessage(from, {
+        image: {
+            url: ALIVE_IMG
+        },
+        caption,
+        contextInfo: {
+            mentionedJid: [m.sender],
+            forwardingScore: 999,
+            isForwarded: true,
+            forwardedNewsletterMessageInfo: {
+                newsletterJid: "120363377933108135@newsletter",
+                newsletterName: "BUGGU-MD OFFICIAL",
+                serverMessageId: 143
             }
-        }, { quoted: fakevCard });
+        }
+    }, {
+        quoted: fakevCard
+    });
 
-    } catch (error) {
-        console.error("Error in alive command: ", error);
-        
-        // Respond with error details 
-        const errorMessage = `
-❌ An error occurred while processing the alive command.
-🛠 *Error Details*:
-${error.message}
+} catch (error) {
+    console.error(error);
+    reply(`❌ Error: ${error.message}`);
+}
+```
 
-Please report this issue or try again later.
-        `.trim();
-        return reply(errorMessage);
-    }
 });
